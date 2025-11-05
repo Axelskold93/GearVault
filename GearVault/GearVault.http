@@ -1,0 +1,6 @@
+@GearVault_HostAddress = http://localhost:5152
+
+GET {{GearVault_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
