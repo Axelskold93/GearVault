@@ -1,7 +1,9 @@
 using GearVault.Data;
 using Microsoft.EntityFrameworkCore;
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.Extensions.Logging;
 
+var builder = WebApplication.CreateBuilder(args);
+using ILoggerFactory factory = LoggerFactory.Create(builder => builder.AddConsole());
 // Add services to the container.
 
 builder.Services.AddControllers();

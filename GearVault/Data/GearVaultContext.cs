@@ -8,7 +8,7 @@ public class GearVaultContext : DbContext
     public GearVaultContext(DbContextOptions<GearVaultContext> options)
         : base(options) { }
 
-    // Tabell för dina prylar
+    
     public DbSet<GearItem> GearItems => Set<GearItem>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
