@@ -1,0 +1,34 @@
+@page "/item/{Id:int}"
+@inject HttpClient Http
+@using GearVault.DTOs
+
+<h3>Item Details</h3>
+
+@if (item is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@item.Name</h5>
+            <p class="card-text">Brand: @item.Brand</p>
+            <p class="card-text">Model: @item.Model</p>
+            <p class="card-text">Category: @item.HardWareCategory</p>
+            <p class="card-text">Status: @item.HardWareStatus</p>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private GearDetailDto? item;
+
+    protected override async Task OnInitializedAsync()
+    {
+        item = await Http.GetFromJsonAsync<GearDetailDto>($"api/gear/gearitem?id={Id}");
+    }
+}

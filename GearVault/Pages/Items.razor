@@ -1,0 +1,65 @@
+@page "/items"
+@inject HttpClient Http
+
+<h1>Gear Items</h1>
+
+<button class="btn btn-primary mb-3" @onclick="LoadItems">Refresh</button>
+
+@if (items is null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (items.Count == 0)
+{
+    <p>No items found.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Category</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var it in items)
+            {
+                <tr>
+                    <td>@it.Id</td>
+                    <td>@it.Name</td>
+                    <td>@it.Brand</td>
+                    <td>@it.Model</td>
+                    <td>@it.HardWareCategory</td>
+                    <td>@it.HardWareStatus</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<GearVault.DTOs.GearItemDto>? items;
+
+    private async Task LoadItems()
+    {
+        try
+        {
+            items = await Http.GetFromJsonAsync<List<GearVault.DTOs.GearItemDto>>("api/gear/gearitems");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            items = new List<GearVault.DTOs.GearItemDto>();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadItems();
+    }
+}

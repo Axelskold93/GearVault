@@ -1,0 +1,20 @@
+@page "/"
+@inject NavigationManager Nav
+
+<div class="jumbotron p-4 bg-primary text-white rounded">
+    <h1>Welcome to GearVault</h1>
+    <p>Manage your PC gear inventory</p>
+    <button class="btn btn-light" @onclick="GoToItems">View Items</button>
+</div>
+
+<div class="mt-4">
+    <h3>Quick Actions</h3>
+    <div class="btn-group">
+        <a class="btn btn-outline-primary" href="/items">Items</a>
+        <a class="btn btn-outline-secondary" href="/create">Add Item</a>
+    </div>
+
+@code {
+    void GoToItems() => Nav.NavigateTo("/items");
+}
+</div>

@@ -1,0 +1,26 @@
+@inherits LayoutComponentBase
+
+<div class="d-flex" style="min-height:100vh;">
+    <nav class="sidebar bg-light border-end">
+        <div class="sidebar-header p-3">
+            <h4>GearVault</h4>
+        </div>
+        <ul class="nav flex-column p-2">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/items">Items</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/create">Add Item</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="flex-fill p-4">
+        <div class="container-fluid">
+            @Body
+        </div>
+    </main>
+</div>

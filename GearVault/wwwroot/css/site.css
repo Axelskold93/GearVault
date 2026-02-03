@@ -1,0 +1,10 @@
+body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+.sidebar { width: 240px; }
+.sidebar .nav-link { color: #333; }
+.sidebar .nav-link.active { font-weight: 600; }
+.jumbotron { background-image: linear-gradient(135deg, #0d6efd88, #6610f288); }
+.card { box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+
+@media (max-width: 768px) {
+    .sidebar { display:none; }
+}

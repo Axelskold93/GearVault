@@ -1,0 +1,51 @@
+@page "/create"
+@inject HttpClient Http
+
+<h1>Add Gear Item</h1>
+
+<div class="card p-3">
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input class="form-control" @bind="dto.Name" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Brand</label>
+        <input class="form-control" @bind="dto.Brand" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Model</label>
+        <input class="form-control" @bind="dto.Model" />
+    </div>
+    <button class="btn btn-success" @onclick="CreateItem">Create</button>
+</div>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-info mt-3">@message</div>
+}
+
+@code {
+    private GearVault.DTOs.CreateItemDto dto = new();
+    private string? message;
+
+    private async Task CreateItem()
+    {
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/gear/create/gearitem", dto);
+            if (response.IsSuccessStatusCode)
+            {
+                message = "Item created.";
+                dto = new();
+            }
+            else
+            {
+                message = $"Failed: {response.StatusCode}";
+            }
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
+}
