@@ -10,19 +10,19 @@ namespace GearVault.DTOs
 
         public string Brand { get; set; } = string.Empty;
 
-        public string? Model { get; set; }
+        public string Model { get; set; } = string.Empty;
 
-        public HardWareCategory HardWareCategory { get; set; }
+        public HardWareCategory Category { get; set; }
 
-        public HardWareStatus HardWareStatus { get; set; }
+        public HardWareStatus Status { get; set; }
 
         public string? Specs { get; set; }
 
-        public string? Location { get; set; }
+        public string Location { get; set; } = string.Empty;
 
-        public string? Notes { get; set; }
+        public string Notes { get; set; } = string.Empty;
 
-        public decimal? PurchasePrice { get; set; }
+        public decimal PurchasePrice { get; set; }
 
         public DateOnly? PurchaseDate { get; set; }
     }
